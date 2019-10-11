@@ -1,0 +1,7 @@
+:Tabmerge	Tabmerge.txt	/*:Tabmerge*
+Tabmerge	Tabmerge.txt	/*Tabmerge*
+Tabmerge-commands	Tabmerge.txt	/*Tabmerge-commands*
+Tabmerge-config	Tabmerge.txt	/*Tabmerge-config*
+Tabmerge-contents	Tabmerge.txt	/*Tabmerge-contents*
+Tabmerge.txt	Tabmerge.txt	/*Tabmerge.txt*
+g:tm_default_location	Tabmerge.txt	/*g:tm_default_location*

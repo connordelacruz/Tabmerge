@@ -1,0 +1,28 @@
+*Tabmerge.txt*
+                                                                    *Tabmerge*
+
+==============================================================================
+CONTENTS                                                   *Tabmerge-contents*
+  1. Configuration...........................................|Tabmerge-config|
+  2. Commands..............................................|Tabmerge-commands|
+
+==============================================================================
+CONFIGURATION                                                *Tabmerge-config*
+
+                                                       *g:tm_default_location*
+Default location to merge windows when calling |:Tabmerge| without specifying
+the location argument
+
+==============================================================================
+COMMANDS                                                   *Tabmerge-commands*
+
+:Tabmerge [tab_number] [location]                                  *:Tabmerge*
+  Merge tab [tab_number] into the current window at the specified [location]
+  (top,bottom,left,right).
+
+  [tab_number] is the tab to the right, or to the left if there is none to the
+  right if omitted.
+  [location] is |g:tm_default_location| if omitted.
+
+
+vim:tw=78:ts=8:ft=help:norl:

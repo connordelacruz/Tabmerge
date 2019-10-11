@@ -1,3 +1,4 @@
+" TODO vimdoc header
 " ============================================================================
 " Tabmerge -- Merge the windows in a tab with the current tab.
 " Author: Connor de la Cruz <github.com/connordelacruz>
@@ -29,13 +30,27 @@ if v:version < 700
 endif
 
 if !exists("g:tm_default_location")
+    ""
+    " Default location to merge windows when calling @command(Tabmerge)
+    " without specifying the location argument
     let g:tm_default_location = 'top'
 endif
 
+""
+" Merge tab [tab_number] into the current window at the specified [location]
+" (top,bottom,left,right).
+"
+" @default tab_number=the tab to the right, or to the left if there is none to the right
+" @default location=@setting(tm_default_location)
 command! -nargs=* Tabmerge call Tabmerge(<f-args>)
 
 " TODO: mapping configs
 
+""
+" Merge tab [tab_number] into the current window at the specified [location].
+" Implementation for @command(Tabmerge)
+" @default tab_number=the tab to the right, or to the left if there is none to the right
+" @default location=@setting(tm_default_location)
 function! Tabmerge(...)  " {{{1
 	if a:0 > 2
 		echohl ErrorMsg
