@@ -1,31 +1,40 @@
+" ============================================================================
 " Tabmerge -- Merge the windows in a tab with the current tab.
+" Author: Connor de la Cruz <github.com/connordelacruz>
+" 
+" Based on script by Christian J. Robinson <infynity@onewest.net>: 
+" http://www.vim.org/scripts/script.php?script_id=1961
 "
-" Copyright July 17, 2007 Christian J. Robinson <infynity@onewest.net>
-"
-" Distributed under the terms of the Vim license.  See ":help license".
-
 " Usage:
 "
 " :Tabmerge [tab number] [top|bottom|left|right]
 "
-" The tab number can be "$" for the last tab.  If the tab number isn't
-" specified the tab to the right of the current tab is merged.  If there
-" is no right tab, the left tab is merged.
+" The tab number can be "$" for the last tab. If the tab number isn't
+" specified the tab to the right of the current tab is merged. If there is no
+" right tab, the left tab is merged.
 "
-" The location specifies where in the current tab to merge the windows.
-" Defaults to "top".
+" The location specifies where in the current tab to merge the windows. If the
+" location isn't provided, defaults to the value of g:tm_default_location or
+" "top" if g:tm_default_location is not set
 "
 " Limitations:
 "
-" Vertical windows are merged as horizontal splits.  Doing otherwise would be
+" Vertical windows are merged as horizontal splits. Doing otherwise would be
 " nearly impossible.
+" ============================================================================
 
 if v:version < 700
 	echoerr "Tabmerge.vim requires at least Vim version 7"
 	finish
 endif
 
+if !exists("g:tm_default_location")
+    let g:tm_default_location = 'top'
+endif
+
 command! -nargs=* Tabmerge call Tabmerge(<f-args>)
+
+" TODO: mapping configs
 
 function! Tabmerge(...)  " {{{1
 	if a:0 > 2
@@ -45,7 +54,7 @@ function! Tabmerge(...)  " {{{1
 	endif
 
 	if !exists('l:where')
-		let where = 'top'
+		let where = g:tm_default_location
 	endif
 
 	if !exists('l:tabnr')
@@ -112,4 +121,3 @@ function! Tabmerge(...)  " {{{1
 	let &switchbuf = save_switchbuf
 endfunction
 
-" vim:fdm=marker:fdc=2:fdl=1:
